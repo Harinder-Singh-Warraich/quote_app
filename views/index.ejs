@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(243, 223, 197);
+        }
+        h1{
+            background-color: rgb(54, 142, 243);
+            text-align: center;
+        }
+        #u{
+        margin-left: 25%;
+        list-style: none;
+    }
+    #l{
+        width: 600px;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 1px 1px 2px rgb(104, 104, 104);
+        padding: 16px;
+        margin-bottom: 10px;
+        background-color: rgb(179, 245, 231);
+        word-wrap: break-word;
+    }
+    #view{
+        width:80px;
+        height:30px;
+        background-color:rgb(130, 243, 247) ;
+        border:none;
+    }
+    #view:hover{
+        background-color: rgb(39, 238, 245);
+    }
+    span{
+        font-size: 2rem;
+        margin: auto;
+        color:white;
+    }
+    #delete{
+        background-color: red;
+        width:80px;
+        height:30px;
+        border:none;
+    }
+    #nb{
+        text-align: center;
+        background-color: rgb(63, 110, 241);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.nbl{
+    display: inline-block;
+  padding: 8px;
+}
+#nbln{
+    float:right;
+}
+#new{
+    width:80px;
+        height:30px;
+        background-color: rgb(39, 238, 245);
+        border:none;
+}
+
+
+
+    </style>
+</head>
+<body>
+    <navbar>
+        <ul id="nb">
+            <li class="nbl"><span>Quotes</span></li>
+            <li class="nbl" id="nbln"><a id="new" href="/quotes/new"><button>Add Quote</button></a></li>
+        </ul>
+    
+
+    
+    </navbar>
+    <div>
+        <ul id="u">
+
+            <% for(let quote of quotes){ %> 
+    
+                <li id="l">
+                    <h3><%= quote.description %> </h3>
+                    <p><i><%= quote.name %></i> </p>
+                    <a href="/quotes/<%= quote._id %> "><button id="view">View</button></a><br>
+                    <form action="/quotes/<%= quote._id %>?_method=DELETE" method="POST">
+                        <button id="delete" type="submit">Delete</button>
+                    </form>
+                </li>
+    
+            <% } %> 
+        </ul>
+    </div>
+</body>
+</html>
